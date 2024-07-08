@@ -4,8 +4,10 @@ const Logo = () => {
   return (
     <Link to="/">
       <div className="font-display flex items-center gap-1">
-        <span className="bg-black rounded-full text-white px-1 text-md">L</span>
-        <span className="text-xl">Logo</span>
+        <span className="bg-black rounded-full text-white px-1 text-md">
+          Mojo's
+        </span>
+        <span className="text-xl">Blog</span>
       </div>
     </Link>
   );

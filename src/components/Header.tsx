@@ -1,11 +1,20 @@
+import { Link } from "react-router-dom";
+import { MdLogin as IconLogin } from "react-icons/md";
+
 import Logo from "./Logo";
-import SignControls from "./SignControls";
+import SearchForm from "./SearchForm";
+import Navbar from "./Navbar";
 
 const Header = () => {
   return (
-    <header className="w-full px-8 flex items-center justify-between border-b-2 border-black">
+    <header className="w-full px-8 py-4 flex items-center justify-between border-b-2 border-black">
       <Logo />
-      <SignControls />
+      <SearchForm />
+      <Navbar />
+      <Link to="/login">
+        <IconLogin />
+        login
+      </Link>
     </header>
   );
 };
