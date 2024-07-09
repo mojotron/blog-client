@@ -1,7 +1,30 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Logo from "../../components/Logo";
+import { useSignUp } from "../../hooks/useSignUp";
+import type { SignUpFormType } from "../../types/formDataTypes";
 
 const SignUp = () => {
+  const { error, loading, signUp } = useSignUp();
+
+  const [formData, setFormData] = useState<SignUpFormType>({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((oldData) => ({
+      ...oldData,
+      [e.target.id]: e.target.value.trim(),
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    await signUp({ ...formData });
+  };
+
   return (
     <div className="p-5">
       <div className="flex gap-2 flex-col md:flex-row">
@@ -14,7 +37,7 @@ const SignUp = () => {
           </p>
         </div>
         {/* right */}
-        <form className="flex-1">
+        <form className="flex-1" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-1">
             <label htmlFor="username">username</label>
             <input
@@ -23,6 +46,7 @@ const SignUp = () => {
               type="text"
               required
               placeholder="username"
+              onChange={handleChange}
             />
           </div>
 
@@ -34,6 +58,7 @@ const SignUp = () => {
               type="email"
               required
               placeholder="name@provider.com"
+              onChange={handleChange}
             />
           </div>
 
@@ -45,6 +70,7 @@ const SignUp = () => {
               type="password"
               required
               placeholder="password"
+              onChange={handleChange}
             />
           </div>
 
@@ -56,6 +82,7 @@ const SignUp = () => {
               type="password"
               required
               placeholder="confirm password"
+              onChange={handleChange}
             />
           </div>
           <button
