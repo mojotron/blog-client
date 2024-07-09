@@ -11,7 +11,7 @@ const Header = () => {
       <Logo />
       <SearchForm />
       <Navbar />
-      <Link to="/login">
+      <Link to="/login" className="flex items-center gap-1">
         <IconLogin />
         login
       </Link>
