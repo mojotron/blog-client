@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useSignUp } from "../../hooks/useSignUp";
+
 // components and ui components
 import Logo from "../../components/Logo";
 import Button from "../../ui/Button";
@@ -52,7 +53,9 @@ const SignUp = () => {
               placeholder="username"
               onChange={handleChange}
             />
-            {true && <InputError message="this is error test" />}
+            {error && error.inputFieldError["username"] && (
+              <InputError message={error.inputFieldError["username"][0]} />
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -65,7 +68,9 @@ const SignUp = () => {
               placeholder="name@provider.com"
               onChange={handleChange}
             />
-            {true && <InputError message="this is error test" />}
+            {error && error.inputFieldError["email"] && (
+              <InputError message={error.inputFieldError["email"][0]} />
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -78,7 +83,9 @@ const SignUp = () => {
               placeholder="password"
               onChange={handleChange}
             />
-            {true && <InputError message="this is error test" />}
+            {error && error.inputFieldError["password"] && (
+              <InputError message={error.inputFieldError["password"][0]} />
+            )}
           </div>
 
           <div className="flex flex-col gap-1 mb-5">
@@ -91,12 +98,16 @@ const SignUp = () => {
               placeholder="confirm password"
               onChange={handleChange}
             />
-            {true && <InputError message="this is error test" />}
+            {error && error.inputFieldError["confirmPassword"] && (
+              <InputError
+                message={error.inputFieldError["confirmPassword"][0]}
+              />
+            )}
           </div>
           <Button disabled={loading}>
             {loading ? "loading..." : "Sign up"}
           </Button>
-          {true && <InputError message="this is error test" />}
+          {error && <InputError message={error.message} />}
         </form>
       </div>
     </div>

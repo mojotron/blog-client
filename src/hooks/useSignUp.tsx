@@ -1,9 +1,12 @@
 import { useCallback, useState } from "react";
 import type { SignUpFormType } from "../types/formDataTypes";
+import type { FormInputErrorType } from "../types/errorTypes";
+import { useNavigate } from "react-router-dom";
 
 export const useSignUp = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<FormInputErrorType | null>(null);
+  const navigate = useNavigate();
 
   const signUp = useCallback(async (data: SignUpFormType) => {
     try {
@@ -17,10 +20,19 @@ export const useSignUp = () => {
 
       const json = await response.json();
 
-      console.log(json);
+      if (json.status === "error") {
+        setError({
+          inputFieldError: json.inputFieldError || {},
+          message: json.msg,
+        });
+      }
+
+      if (response.ok) {
+        navigate("/");
+      }
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error);
+        setError({ message: error.message, inputFieldError: {} });
       }
     } finally {
       setLoading(false);
