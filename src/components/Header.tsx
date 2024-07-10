@@ -4,6 +4,7 @@ import { MdLogin as IconLogin } from "react-icons/md";
 import Logo from "./Logo";
 import SearchForm from "./SearchForm";
 import Navbar from "./Navbar";
+import Button from "../ui/Button";
 
 const Header = () => {
   return (
@@ -12,8 +13,10 @@ const Header = () => {
       <SearchForm />
       <Navbar />
       <Link to="/login" className="flex items-center gap-1">
-        <IconLogin />
-        login
+        <Button>
+          <IconLogin />
+          login
+        </Button>
       </Link>
     </header>
   );

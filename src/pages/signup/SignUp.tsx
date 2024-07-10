@@ -1,6 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import Logo from "../../components/Logo";
 import { useSignUp } from "../../hooks/useSignUp";
+// components and ui components
+import Logo from "../../components/Logo";
+import Button from "../../ui/Button";
+import InputError from "../../ui/InputError";
+// types
 import type { SignUpFormType } from "../../types/formDataTypes";
 
 const SignUp = () => {
@@ -48,6 +52,7 @@ const SignUp = () => {
               placeholder="username"
               onChange={handleChange}
             />
+            {true && <InputError message="this is error test" />}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -60,6 +65,7 @@ const SignUp = () => {
               placeholder="name@provider.com"
               onChange={handleChange}
             />
+            {true && <InputError message="this is error test" />}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -72,6 +78,7 @@ const SignUp = () => {
               placeholder="password"
               onChange={handleChange}
             />
+            {true && <InputError message="this is error test" />}
           </div>
 
           <div className="flex flex-col gap-1 mb-5">
@@ -84,13 +91,12 @@ const SignUp = () => {
               placeholder="confirm password"
               onChange={handleChange}
             />
+            {true && <InputError message="this is error test" />}
           </div>
-          <button
-            className="w-full border border-black py-0.5 pl-1 pr-5 rounded-md outline-none focus:ring focus:ring-red-400 hover:bg-black hover:text-white"
-            type="submit"
-          >
-            Sign Up
-          </button>
+          <Button disabled={loading}>
+            {loading ? "loading..." : "Sign up"}
+          </Button>
+          {true && <InputError message="this is error test" />}
         </form>
       </div>
     </div>
