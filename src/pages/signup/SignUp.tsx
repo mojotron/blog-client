@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useSignUp } from "../../hooks/useSignUp";
+import { useSignUp } from "./useSignUp";
 
 // components and ui components
 import Logo from "../../components/Logo";

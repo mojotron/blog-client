@@ -9,7 +9,7 @@ type PropsType = {
 const Button = ({ type = "submit", disabled = false, children }: PropsType) => {
   return (
     <button
-      className="w-full flex items-center justify-center gap-1 border border-black  px-2 h-8 rounded-md outline-none focus:ring focus:ring-red-400 hover:bg-black hover:text-white disabled:border-gray-400 disabled:text-gray-400"
+      className="w-full text-cta flex items-center justify-center gap-1 border border-cta  px-2 h-8 rounded-md outline-none focus:ring focus:ring-secondary hover:bg-cta hover:text-white disabled:border-disabled disabled:text-disabled"
       type={type}
       disabled={disabled}
     >

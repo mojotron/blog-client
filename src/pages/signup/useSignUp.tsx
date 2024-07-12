@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import type { SignUpFormType } from "../types/formDataTypes";
-import type { FormInputErrorType } from "../types/errorTypes";
+import type { SignUpFormType } from "../../types/formDataTypes";
+import type { FormInputErrorType } from "../../types/errorTypes";
 import { useNavigate } from "react-router-dom";
 
 export const useSignUp = () => {

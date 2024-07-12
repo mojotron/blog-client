@@ -8,7 +8,7 @@ import Button from "../ui/Button";
 
 const Header = () => {
   return (
-    <header className="w-full px-8 py-4 flex items-center justify-between border-b-2 border-black">
+    <header className="w-full px-8 py-4 flex items-center justify-between border-b-2 border-primary">
       <Logo />
       <SearchForm />
       <Navbar />
